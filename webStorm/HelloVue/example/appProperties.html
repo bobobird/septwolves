@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <script src="../jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello vue'
+            },
+            methods:{
+                change:function () {
+                    alert('调用了构造器change方法,利用jquery改变html值');
+                    $('#app').html('hello jquery');
+
+                }
+            }
+        })
+
+        console.log('实例app：');
+        console.log(app);
+        app.change();
+    </script>
+
+</body>
+</html>

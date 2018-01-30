@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>实例方法</h1>
+    <p>1、$mount方法，挂载扩展，  标签和数据的关联挂载</p>
+    <p>2、$destroy方法，卸载挂载，取消标签和数据的关联</p>
+    <p>3、$forceUpdate方法，重新加载，</p>
+    <p>4、$nextTick方法，修改更新，类似于updated钩子函数</p>
+
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click="add">加</button>
+        <button onclick="doDestoty()">销毁</button>
+        <button onclick="doMount()">挂载</button>
+        <button onclick="doRefresh()">刷新</button>
+        <button onclick="doTick()">修改</button>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                count:1
+            },
+            methods:{
+                add:function () {
+                    this.count++;
+                },
+            },
+            mounted:function () {
+                alert('挂载---');
+            },
+            updated:function () {
+                alert('更新----');
+            },
+            destroyed:function () {
+                alert('销毁-----')
+            }
+        });
+
+        function doMount() {
+            app.$mount('#app');
+        }
+        function doDestoty() {
+            app.$destroy();
+        }
+        function doRefresh() {
+            app.$forceUpdate()
+        }
+        function doTick() {
+            app.count=100;
+            app.$nextTick(function () {
+                alert('count 更新完成后$nextTick被调用了')
+            })
+        }
+
+
+    </script>
+
+
+</body>
+</html>

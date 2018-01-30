@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>propsData 选项</h1>
+    <h3>propsData不是和属性有关，用在全局扩展中进行数据的传递，实际上我们更多是使用组件来自定义标签，不是用全局扩展，后面propsData也会用vuex来代替</h3>
+    <hr>
+    <hero></hero>
+
+    <script>
+        var hero=Vue.extend({
+            template:'<p>hi：{{gameName}},heroName:{{name}},type:{{type}}</p>',
+            props:['name','type'],
+            data:function () {
+                return {
+                    gameName:'dota'
+                }
+            }
+        });
+        new hero({
+            propsData:{
+                name:'nevermore',
+                type:'agile'
+            }
+        }).$mount('hero');
+
+    </script>
+</body>
+</html>

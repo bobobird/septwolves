@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>v-model 双向数据绑定</h1>
+    <hr>
+    <div id="app">
+        <p>文本信息：{{message}}</p>
+        <h3>文本输入框</h3>
+        <p>v-model:<input type="text" v-model="message"></p>
+        <p>v-model.lazy:<input type="text" v-model.lazy="message"></p>
+        <!--在数字后面不能输入字符，可以以字符开头输入-->
+        <p>v-model.number:<input type="text" v-model.number="message"></p>
+        <!--输入前后的去空格-->
+        <p>v-model.trim:<input type="text" v-model.trim="message"></p>
+        <h3>文本区域</h3>
+        <textarea cols="30" rows="15" v-model="message"></textarea>
+        <h3>复选框绑定一个值</h3>
+        <input type="checkbox" id="ck" v-model="isChecked">
+        <label for="ck">{{isChecked}}</label>
+        <h3>复选框绑定一个数组</h3>
+        <input type="checkbox" id="puck" value="puck" v-model="heros">
+        <label for="puck">puck</label>
+        <input type="checkbox" id="sf" value="sf" v-model="heros">
+        <label for="sf">sf</label>
+        <input type="checkbox" id="lina" value="lina" v-model="heros">
+        <label for="lina">lina</label>
+        <p>勾选英雄：{{heros}}</p>
+        <h3>单选按钮绑定</h3>
+        <input type="radio" id="man" value="男" v-model="sex">
+        <label for="man">男</label>
+        <input type="radio" id="female" value="女" v-model="sex">
+        <label for="female">女</label>
+        <p>性别：{{sex}} </p>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                message:'hello world!',
+                isChecked:true,
+                heros:[],
+                sex:"男"
+            }
+        })
+    </script>
+</body>
+</html>

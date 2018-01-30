@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>extends 扩展选项</h1>
+    <p>通过外部增加对象的形式，对构造器进行扩展。它和我们的混入非常的类似。</p>
+    <p>delimiters的作用是改变我们插值的符号。Vue默认的插值是双大括号{{}}</p>
+    <hr>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>${message}</p>
+        <button @click="add">加</button>
+        <button @click="deduct">减</button>
+    </div>
+
+
+    <script>
+        var ext={
+            created:function () {
+                alert('我是扩展出来的created 函数')
+            },
+            methods:{
+                deduct:function () {
+                    this.message--;
+                    alert('我是扩展出来的deduct方法')
+                },
+                add:function () {
+                    alert('我是扩展出来的add方法');
+                }
+            }
+        };
+
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:1
+            },
+            methods:{
+                add:function () {
+                    this.message++;
+                    alert('我是原生的add方法');
+                }
+            },
+            extends:ext,
+            //delimiters的作用是改变我们插值的符号。Vue默认的插值是双大括号{{}}
+            delimiters:['${','}']
+        })
+
+    </script>
+</body>
+</html>

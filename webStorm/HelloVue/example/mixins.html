@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>mixins 混入选项</h1>
+    <p>1、在你已经写好了构造器后，需要增加方法或者临时的活动时使用的方法，这时用混入会减少源代码的污染。</p>
+    <p>2、很多地方都会用到的公用方法，用混入的方法可以减少代码量，实现代码重用。</p>
+    <p>3、钩子函数执行顺序：全局>外部>原生</p>
+    <p>4、当混入方法和构造器的方法重名时，混入的方法不起作用</p>
+    <hr>
+    <div id="app">
+        <p>{{message}}</p>
+        <button @click="add">加</button>
+        <button @click="deduct">减</button>
+    </div>
+
+    <script>
+        Vue.mixin({
+            updated:function () {
+                alert('我是全局混入updated');
+            }
+        });
+
+        var addLog={
+            updated:function () {
+                alert('我是外部混入的updated');
+            },
+            methods:{
+                add:function () {
+                    //同名不起作用
+                    alert('外部的add方法');
+                },
+                deduct:function () {
+                    this.message--;
+                    alert('外部混入的减方法');
+                }
+            }
+
+        };
+        var addextend={
+
+        };
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:1
+            },
+            methods:{
+                add:function () {
+                   this.message++;
+                }
+            },
+            updated:function () {
+                alert('我是原生的updated')
+            },
+            mixins:[addLog,addextend]
+
+
+        })
+    </script>
+</body>
+</html>

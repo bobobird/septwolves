@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>component父子组件</h1>
+    <hr>
+    <div id="app">
+        <Dota v-bind:platform="platformName"></Dota>
+    </div>
+<script>
+    <!--声明在使用前-->
+    var author={
+        template:`<h3>authorName:{{authorName}},age:{{age}}</h3>`,
+        props:['authorName','age']
+    };
+    var dota={
+        template:`<div>
+                      <p>platform of game:{{platform}}</p>
+                      <author authorName="伍声 2009" v-bind:age="age"></author>
+                </div>`,
+        components:{
+            'author':author
+        },
+        //必需用函数向子组件传值
+        data:function () {
+            return {
+                age:32
+            }
+        },
+        props:['platform']
+
+    };
+    var app=new Vue({
+        el:'#app',
+        data:{
+            platformName:"09电竞",
+        },
+        components:{
+          'dota':dota
+        }
+    })
+
+</script>
+
+
+</body>
+</html>

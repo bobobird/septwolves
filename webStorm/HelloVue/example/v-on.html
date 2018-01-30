@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>v-on:事件监听</h1>
+    <hr>
+    <div id="app">
+        统计数据：{{count}}
+        <br>
+
+        <button v-on:click="add">加</button>
+        <button @click="deduct">减</button>
+        <p>Enter键触发事件：
+        <input type="text" v-on:keyup.enter="onEnter" v-model="changeNum">
+        </p>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                count:1,
+                changeNum:''
+            },
+
+            methods:{
+                add:function () {
+                    this.count++;
+                },
+                deduct:function () {
+                    this.count--;
+                },
+                onEnter:function () {
+                    this.count=this.count+parseInt(this.changeNum);
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

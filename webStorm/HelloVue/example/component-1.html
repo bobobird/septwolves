@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>组件的初识：</h1>
+    <hr>
+    <div id="app">
+        <Globalhello></Globalhello>
+        <localhello></localhello>
+    </div>
+    <script>
+        //组件名不支持驼峰命名
+        Vue.component('globalhello',{
+            template:`<h3>全局化注册组件:&lt;globalhello&gt;标签</h3>`
+        });
+
+        var localHello={template:`<h3>局部注册组件：&lt;localhello&gt;标签</h3>`};
+
+        var app=new Vue({
+            el:'#app',
+            components:{
+                'localhello':localHello
+            }
+        })
+    </script>
+</body>
+</html>

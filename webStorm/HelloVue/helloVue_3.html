@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>app_3</title>
+    <script src="vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+    <style>
+        .expand-enter-active{
+            transition:all .5s ease;
+            height: 30px;
+            padding: 10px;
+            background-color: #eeeeee;
+        }
+        .expand-leave-active{
+            transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+            height: 30px;
+
+        }
+        .expand-enter, .expand-leave-active {
+
+            background-color: #ff33ff;
+            opacity: 0;
+        }
+
+        .list-item{
+            display:inline-block;
+            margin: 10px;
+        }
+
+        .list-enter-active,.list-leave-active{
+            transition:all 3s;
+        }
+        .list-enter,.list-leave-active{
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .list-move{
+            transition:transform 10s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-1">
+        <transition name="expand">
+            <p v-if="show">hello</p>
+        </transition>
+        <button v-on:click="show=!show">Toggle</button>
+    </div>
+
+    <div id="app-2" class="demo">
+        <button v-on:click="shuffle">Shuffle</button>
+        <button v-on:click="add">add</button>
+        <button v-on:click="remove">remove</button>
+        <transition-group name="list" tag="p">
+            <span v-for="item in items" v-bind:key="item" class="list-item">
+                {{item}}
+            </span>
+        </transition-group>
+    </div>
+
+    <script>
+            new Vue({
+              el:'#app-1',
+              data:{
+                  show:true,
+                  transitionState:'Idle'
+              },
+
+            });
+
+            new Vue({
+                el:'#app-2',
+                data:{
+                    items:[1,2,3,4,5,6,7,8,9],
+                    nextNum:10
+                },
+                methods:{
+                    randomIndex:function () {
+                        return Math.floor(Math.random()*this.items.length)
+                    },
+                    add:function () {
+                        this.items.splice(this.randomIndex(),0,this.nextNum++)
+                    },
+                    remove:function () {
+                        this.items.splice(this.randomIndex(),1)
+                    },
+                    shuffle: function () {
+                        this.items = _.shuffle(this.items)
+                    }
+
+                }
+               
+            })
+    </script>
+
+</body>
+</html>

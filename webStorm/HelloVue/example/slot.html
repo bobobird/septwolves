@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>slot 内置组件</h1>
+    <p>slot:html 标签内容的扩展,用slot功能让组件接收传递过来的值，并在模板中接收显示</p>
+    <p>1.在HTML的组件中用slot属性传递值。</p>
+    <p>2.在组件模板中用<slot></slot>标签接收值。</p>
+    <hr>
+    <div id="app">
+        <hero>
+            <span slot="heroName">{{heroName}}</span>
+            <span slot="heroType">{{heroType}}</span>
+            <span slot="heroLevel">{{heroLevel}}</span>
+        </hero>
+    </div>
+
+    <template id="tmp">
+        <div>
+            <p>英雄名：<slot name="heroName"></slot></p>
+            <p>英雄类型：<slot name="heroType"></slot></p>
+            <p>英雄等级：<slot name="heroLevel"></slot></p>
+        </div>
+    </template>
+
+    <script>
+        var hero={
+            template:'#tmp',
+        }
+        var app=new Vue({
+            el:'#app',
+            data:{
+                heroName:'puck',
+                heroType:'智力',
+                heroLevel:'25',
+            },
+            components:{
+                'hero':hero
+            }
+
+        })
+
+    </script>
+</body>
+</html>

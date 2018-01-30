@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>v-text：文本输出   v-html：html标签输出</h1>
+    <hr>
+    <div id="app">
+        <!--两种效果是一样的，区别是在页面出错时，v-text不会显示任何东西，{{message}}会直接显示在页面-->
+        <span>{{message}}</span>
+        <P>v-text指令:<span v-text="message"></span></P>
+       <!--v-html 输出的是纯html 容易遭到xss攻击-->
+        <span v-html="msgHtml"></span>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                message:"Hello World!",
+                msgHtml:"<h3>Hello Vue</h3>"
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>computed 计算属性</h1>
+    <p>computed 的作用主要是在数据输出前对原数据进行改造。改造输出：包括格式的编辑，大小写转换，顺序重排，添加符号……。</p>
+    <hr>
+    <div id="app">
+        <p>{{newHeroName}}</p>
+        <ol>
+            <li v-for="item in newitems">
+                {{item}}
+            </li>
+
+        </ol>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                heroName:'nevermore',
+                items:['a','b','c','d','e','f','g']
+            },
+            computed:{
+                newHeroName:function () {
+                    return this.heroName.toUpperCase();
+                },
+                newitems:function () {
+                    return this.items.reverse();
+
+                }
+
+            }
+        })
+    </script>
+
+</body>
+
+
+</html>

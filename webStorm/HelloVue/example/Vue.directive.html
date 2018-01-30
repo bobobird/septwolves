@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>Vue.directive自定义指令</h1>
+    <hr>
+    <div id="app">
+        <p v-cswe="color">{{message}}</p>
+        <p>
+            <button @click="add">增加</button>
+            <button onclick="unbind()">解绑</button>
+        </p>
+
+    </div>
+
+    <script>
+        function  unbind() {
+            app.$destroy();
+        }
+        Vue.directive('cswe',{
+                bind:function (el,bind,vnode) {
+                    el.style='color:'+bind.value;
+                    console.log('自定义指令,1-bind,被绑定');
+                },
+                inserted:function () {
+                    console.log('2-inserted,绑定到节点');
+                },
+                update:function () {
+                    console.log('3-update,组件更新');
+                },
+                componentUpdated:function () {
+                    console.log('4-updated,组件更新完成');
+                },
+                unbind:function () {
+                    console.log('5-解绑');
+                }
+
+            });
+
+        var app=new Vue({
+
+            el:'#app',
+            data:{
+                message:10,
+                color:'green'
+            },
+            methods:{
+                add:function () {
+                    this.message++;
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

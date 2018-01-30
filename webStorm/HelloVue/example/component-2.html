@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>component 组件属性</h1>
+    <hr>
+    <div id="app">
+        <!--在构造器中向组件中传值使用v-bind：***，把组件当作普通标签对待-->
+        <Dota name="puck" v-bind:type="heroType"></Dota>
+    </div>
+
+    <script>
+        //模板下只能有一个root根元素
+        var dota={
+            template:`
+                <div>
+                    <h3>hero name:{{name}}.</h3>
+                    <h3 style="color: #1c8de0">hero type:{{type}}</h3>
+                </div>`
+                ,
+            props:['name','type']
+        }
+
+        var app=new Vue({
+            el:'#app',
+            data:{
+                heroType:'intelligence'
+            },
+            components:{
+                'dota':dota
+            }
+        })
+    </script>
+</body>
+</html>

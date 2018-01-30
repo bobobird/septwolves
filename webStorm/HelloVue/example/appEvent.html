@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>实例事件</h1>
+    <p>1、$on('',call)在构造器外部添加事件,</p>
+    <p>2、$once('',call)在构造器外部添加事件,只能执行一次</p>
+    <p>3、$off('')关闭事件</p>
+
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click="add">加</button>
+    </div>
+    <button onclick="externalReduce()">外部减</button>
+    <button onclick="reduceOnce()">只减一次reduceOnce</button>
+    <button onclick="off()">关闭reduce事件off</button>
+
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                count:1
+            },
+            methods:{
+                add:function () {
+                    this.count++;
+                }
+            }
+        });
+
+        app.$on('reduce',function () {
+           console.log('执行了on事件');
+           this.count--;
+        });
+
+        function externalReduce() {
+            app.$emit('reduce');
+        };
+
+        app.$once('reduceOnce',function () {
+            console.log('只执行一次的方法');
+            this.count--;
+        });
+
+        function reduceOnce() {
+            app.$emit('reduceOnce')
+        };
+
+        function off() {
+            app.$off('reduce');
+        }
+    </script>
+</body>
+</html>

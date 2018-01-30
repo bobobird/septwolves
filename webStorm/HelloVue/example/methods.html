@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>methods 选项</h1>
+    <hr>
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click="add(3,$event)">加</button>
+        <p>btn组件调用自己的add方法:<btn></btn></p>
+        <p>btn组件调用构造器的方法:<btn1 @click.native="add(3,$event)"></btn1></p>
+    </div>
+
+    <script>
+        var btn={
+            template:'<button @click="add">button组件</button>',
+            methods:{
+                add:function () {
+                    return app.count++;
+                }
+            }
+        };
+        var btn1={
+            template:'<button >button组件</button>',
+            methods:{
+                add:function () {
+                    return app.count++;
+                }
+            }
+        }
+
+
+        var app=new Vue({
+            el:'#app',
+            data:{
+                count:1
+            },
+            methods:{
+                add:function (num,$event) {
+                    console.log($event);
+                    return this.count+=num;
+                }
+            },
+            components:{
+                'btn':btn,
+                'btn1':btn1
+            }
+        })
+    </script>
+</body>
+</html>

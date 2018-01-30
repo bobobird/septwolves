@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue app</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app-1">
+        <p v-bind:class="[classA,classB]">{{message}}</p>
+        <button v-on:click="reverseMessage">逆转消息</button>
+        <button v-on:click="say('hi!',event)">say hi</button>
+        <input v-model="message" >
+    </div>
+
+    <div id="app-2">
+        <ol v-bind:class="classObject" v-bind:style="styleObject">
+            <todo-item v-for="item in items" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+        </ol>
+    </div>
+
+    <div id="app-3">
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+
+        <input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+        <label for="jack">jack</label>
+
+        <input type="checkbox" id="jack1" value="jack1" v-model="checkedNames">
+        <label for="jack1">jack1</label>
+
+        <input type="checkbox" id="jack2" value="jack2" v-model="checkedNames">
+        <label for="jack2">jack2</label>
+
+        <br>
+
+        <input type="radio" id="one" value="one"  v-model="picked">
+        <label for="one">one</label>
+        <input type="radio" id="two" value="two" v-model="picked">
+        <label for="one">two</label>
+
+        <span>Picked:{{picked}}</span>
+
+        <br>
+
+        <select v-model="selected">
+            <option selected>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+`       <span>Selected:{{selected}}</span>
+        <br>
+        <select v-model="dySelected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{option.text}}
+            </option>
+        </select>
+        <span>dySelected:{{dySelected}}</span>
+    </div>
+
+    <script>
+        var app1=new Vue({
+            el:'#app-1',
+            data:{
+                classA:'class-a',
+                classB:'class-b',
+                message:'Hellos Vue.js',
+                styleObject:{
+                    color:'red',
+                    fontSize:'13px'
+
+                }
+            },
+            methods:{
+                reverseMessage:function () {
+                    this.message=this.message.split("").reverse().join('')
+                },
+                say:function (msg,event) {
+                    alert(msg);
+                    event.preventDefault();
+                }
+            }
+        });
+
+        Vue.component('todo-item',{
+                props:['todo'],
+                template:'<li>{{ todo.text }}</li>'
+            });
+        var app2=new Vue({
+            el:'#app-2',
+            data:{
+                classObject:{
+                    'class-a':true,
+                    'class-b':true
+                },
+                styleObject:{
+                    color:'red',
+                    fontSize:'13px'
+
+                },
+                items:[
+                    {id:0,text:"吃饭"},
+                    {id:1,text:'shuijiao'},
+                    {id:2,text:'学习'}
+                ]
+            }
+        });
+
+        var app3 = new Vue({
+            el:'#app-3',
+            data:{
+                checked:false,
+                checkedNames:[],
+                picked:'',
+                selected:null,
+                dySelected:'A',
+                options:[
+                    {text:'one',value:'A'},
+                    {text:'two',value:'B'},
+                    {text:'three',value:'C'}
+                ]
+
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

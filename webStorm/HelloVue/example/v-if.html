@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <h1>v-if v-else v-show </h1>
+    <p>v-if： 判断是否加载，v-show：调整css dispaly属性</p>
+    <hr/>
+    <div id="app">
+        <div v-if="isLogin">
+            你好!<h3 v-show="isShow">Vuer</h3>
+        </div>
+        <button v-on:click="login">登陆</button>
+        <button v-on:click="exit">退出</button>
+        <!--登陆才显示下面的按钮-->
+        <div v-show="isLogin">
+            <button v-on:click="hidden">隐藏用户名</button>
+            <button v-on:click="show">显示用户名</button>
+        </div>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                isLogin:false,
+                isShow:true
+            },
+            methods:{
+                login:function () {
+                    this.isLogin=true;
+                },
+                exit:function () {
+                    this.isLogin=false;
+                },
+                hidden:function () {
+                    this.isShow=false;
+                },
+                show:function () {
+                    this.isShow=true;
+                }
+
+
+            }
+        })
+
+    </script>
+</body>
+</html>

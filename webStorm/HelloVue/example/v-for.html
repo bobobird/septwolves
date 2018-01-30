@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <h1>v-for 指令</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in sortItems">
+                  {{index+1}}:{{ item }}
+            </li>
+
+        </ul>
+
+        <ul>
+            <!--item 和index的位置不能交换-->
+            <li v-for="(item,index) in sortStus">
+                {{index+1}}:{{item.name}}-{{item.age}}
+            </li>
+
+        </ul>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                items:[29,12,90,43],
+                students:[
+                    {name:"曹操",age:"30"},
+                    {name:"刘备",age:"27"},
+                    {name:"赵云",age:"20"},
+                    {name:"关羽",age:"28"}
+                ]
+            },
+            computed:{
+                <!--在computed里新声明了一个对象sortItems，如果不重新声明会污染原来的数据源，这是Vue不允许的-->
+                sortItems:function () {
+                    return this.items.sort(sortNumber)
+                },
+                sortStus:function () {
+                    return sortByKey(this.students,"age")
+                }
+            }
+        });
+        function sortNumber(a,b) {
+            return a-b;
+        }
+
+        function sortByKey (array ,key) {
+            return array.sort(function(a,b){
+                var x=a[key];
+                var y=b[key];
+                return ((x<y)?-1:((x>y)?1:0));
+
+            });
+        }
+
+    </script>
+</body>
+</html>
