@@ -19,23 +19,25 @@
         });
     </script>
     <style type="text/css">
-
+        ul {
+            list-style:none;
+        }
         .labelDiv{
-            position: relative;
             text-align: right;
-            right: 60%;
-            width: 30%;
-            float: right;
+            line-height: 30px;
+            display: inline-block;
         }
+
         .inputDiv{
-            position: absolute;
-            padding-right: 10px;
             text-align: left;
-            left:200px;
+            line-height: 30px;
+            display: inline-block;
         }
+
         .labelInput{
             position: relative;
             width: 180px;
+            height: 20
 
         }
 
@@ -67,13 +69,13 @@
         .btnDiv{
             width: 400px;
             height: 30px;
+            text-align: right;
         }
         button{
             position: relative;
             width: 60px;
             height: 30px;
-            top: 100px;
-            right: 20px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -84,24 +86,24 @@
     <div class="loginDiv">
         <h2>文章設置</h2>
         <hr/>
-        <div class="labelDiv inline-Div">
-            <label class="title">個人分類</label><br>
-            <label class="title">文章關鍵字</label>
-        </div>
-        <div class="inputDiv inline-Div">
-            <select class="labelInput">
-                <option >選項1</option >
-                <option >選項2</option >
-            </select>
-            <br/>
-            <input type="text" class="labelInput" placeholder="請輸入文章的關鍵字">
-        </div>
-        <br>
-        
-        <br>
+        <ul>
+            <li class="labelDiv inline-Div">
+                <label class="title">個人分類</label><br>
+                <label class="title">文章關鍵字</label>
+            </li>
+            <li class="inputDiv inline-Div">
+                <select class="labelInput">
+                    <option >選項1</option >
+                    <option >選項2</option >
+                </select>
+                <br/>
+                <input type="text" class="labelInput" placeholder="請輸入文章的關鍵字">
+            </li>
+        </ul>
+        <input style="margin-left: 20%" type="checkBox" class="checkBtn" >
+        <label>是否记住选择</label>
         <div class="btnDiv" style="text-align: right;">
-            <input type="checkBox" class="checkBtn">
-            <label>是否记住选择</label>
+            
             <button class="cancelBtn">取消</button>
             <button class="confirmBtn">确定</button>
         </div>
