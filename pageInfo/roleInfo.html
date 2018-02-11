@@ -1,0 +1,119 @@
+<!DOCTYPE>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>roleInfo</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/jquery-3.3.1.js"></script>
+
+    <style type="text/css">
+        body{
+            background-color: #fde7e7
+        }
+        a{
+            text-decoration: none;
+        }
+        a:link {color:#0000ff;}
+        a:visited {color:#0000ff;}
+        a:hover {color:#ffcc00;
+            text-decoration: underline;
+            }
+        .linkDiv{
+            margin: auto;
+            text-align: right;
+        }
+        ul li{
+            display: inline-block;
+        }
+
+        button{
+            width: 60px;
+            height: 25px;
+        }
+        .titleDiv{
+            width: 100%;
+            height: 30px;
+            margin-top:30px;
+            display: inline-block;
+        }
+        .titleUl{
+            position: fixed;
+            width: 50%;
+            float: left;
+            padding-top: 0;
+            margin:auto;
+            overflow: hidden;
+        }
+        .searchDiv{
+            position: fixed;
+            width:50%;
+            float: right;
+            overflow: hidden;
+            text-align: right;
+            left: 50%;
+            padding-right:10px;
+        }
+ /*       .infoDiv{
+            position: fixed;
+            width: 100%;
+            height: 110px;
+            text-align: top;
+        }*/
+        .nickA{
+            position: relative;
+            bottom: 60px;
+            left: 40px;
+        }
+        article{ width: 100%; margin: 0; overflow: hidden}
+        .l_box{ width: 25%; float: left; border: 1px solid;}
+        .r_box{ width: 70%; float: right; border: 1px solid;}
+        ul li.titleLi{
+            width: 100;
+            text-align: right;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="linkDiv">
+        <a href="#">昵称（点击可以修改个人资料）</a>
+        <a href="#">博客管理</a>
+    </div>
+    <div class="titleDiv">
+        <ul style="list_style: none" class="titleUl">
+            <li><a href="#">网站首页</a></li>
+            <li><a href="#">渣渣技术</a></li>
+            <li><a href="#">懒散生活</a></li>
+            <li><a href="#">关于我</a></li>
+        </ul>
+        <div class="searchDiv">
+            <input type="text" class="inputSearch">
+            <button class="seachBtn">搜索</button>
+        </div>
+
+    </div>
+    <hr>
+    <div class="infoDiv">
+        <img src="/06.png">
+        <a href="#" class="nickA"><span>昵称（点击进入个人资料页面）</span></a>
+    </div>
+    <hr>
+    <article>
+        
+        <div class="l_box">
+            <ul>
+                <li class="titleLi"><a href="/">文章管理</a></li>
+                <li class="titleLi"><a href="/">分类管理</a></li>
+                <li class="titleLi"><a href="/">草稿箱</a></li>
+                <li class="titleLi"><a href="/">添加用户</a></li>
+                <li class="titleLi"><a href="/">密码修改</a></li>
+
+            </ul>
+        </div>
+        <div class="r_box">
+            
+        </div>
+    </article>
+</body>
+</html>

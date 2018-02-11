@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".loginRef").click(function(){
+                $(".loginDiv").fadeIn(200);
+                $(".bgDiv").fadeIn(200);
+            });
+
+            $(".cancelBtn").click(function () {
+                $(".loginDiv").fadeOut(200);
+                $(".bgDiv").fadeOut(200);
+            });
+
+        });
+    </script>
+    <style type="text/css">
+        ul {
+            list-style:none;
+        }
+        .labelDiv{
+            text-align: right;
+            line-height: 30px;
+            display: inline-block;
+        }
+
+        .inputDiv{
+            text-align: left;
+            line-height: 30px;
+            display: inline-block;
+        }
+
+        .labelInput{
+            position: relative;
+            width: 180px;
+            height: 20
+
+        }
+
+        .loginDiv{
+            position: fixed;
+            width: 400px;
+            height: 250px;
+            background-color: #ffeecb;
+            z-index: 9999;
+            display:none;
+            margin:auto;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid black;
+        }
+        .bgDiv{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.4;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+            display:none;
+        }
+        .btnDiv{
+            width: 400px;
+            height: 30px;
+            text-align: right;
+        }
+        button{
+            position: relative;
+            width: 60px;
+            height: 30px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <a class="loginRef" href="javascript:;">登录</a>
+    
+    <div class="loginDiv">
+        <h2>文章設置</h2>
+        <hr/>
+        <ul>
+            <li class="labelDiv inline-Div">
+                <label class="title">個人分類</label><br>
+                <label class="title">文章關鍵字</label>
+            </li>
+            <li class="inputDiv inline-Div">
+                <select class="labelInput">
+                    <option >選項1</option >
+                    <option >選項2</option >
+                </select>
+                <br/>
+                <input type="text" class="labelInput" placeholder="請輸入文章的關鍵字">
+            </li>
+        </ul>
+        <input style="margin-left: 20%" type="checkBox" class="checkBtn" >
+        <label>是否记住选择</label>
+        <div class="btnDiv" style="text-align: right;">
+            
+            <button class="cancelBtn">取消</button>
+            <button class="confirmBtn">确定</button>
+        </div>
+        
+    </div>
+    <div class="bgDiv"></div>
+
+</body>
+</html>
